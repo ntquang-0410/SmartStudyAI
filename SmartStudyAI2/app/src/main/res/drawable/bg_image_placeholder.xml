@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_image_placeholder.xml
+    Đặt tại: res/drawable/bg_image_placeholder.xml
+
+    Background cho ImageView ivPreview khi chưa có ảnh:
+    - Nền xám nhạt
+    - Viền nét đứt màu xám
+    - Bo góc 12dp
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Lớp 1: Nền bo góc -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#F0F2F5" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+
+    <!-- Lớp 2: Viền nét đứt -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1.5dp"
+                android:color="#C4C9D4"
+                android:dashWidth="8dp"
+                android:dashGap="4dp" />
+            <corners android:radius="12dp" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+</layer-list>
