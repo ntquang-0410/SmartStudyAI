@@ -1,0 +1,75 @@
+# Android/Gradle
+*.iml
+.gradle
+.gradle/
+/local.properties
+local.properties
+/build
+build/
+/captures
+.externalNativeBuild
+.cxx
+.cxx/
+
+# IDE Files
+.idea/
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/vcs.xml
+*.iws
+*.ipr
+*.idev
+
+# DS_Store
+.DS_Store
+
+# Kotlin
+.kotlin/
+
+# Node.js / npm
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# Log files
+*.log
+logs/
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Android studio
+.idea/
+local.properties
+
+# Build outputs
+/bin
+/out
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+
+# Gradle files
+.gradle/
+build/
+
+# Generated files
+generated/
+
+# ProGuard
+/proguard/
+
+# Test coverage
+coverage/
+.coverage
