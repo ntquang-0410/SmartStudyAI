@@ -2,4 +2,34 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="splash_background">#121212</color>
+
+    <!-- Semantic palette — overridden in values-night/colors.xml. -->
+    <color name="app_bg">#F1F5F9</color>
+    <color name="surface_bg">#F5F7FB</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="input_bg">#FFFFFF</color>
+    <color name="input_stroke">#E2E8F0</color>
+
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_tertiary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
+
+    <color name="divider">#E2E8F0</color>
+    <color name="icon_muted">#CBD5E1</color>
+
+    <color name="accent_blue">#3B82F6</color>
+    <color name="accent_blue_dark">#1E3A8A</color>
+    <color name="accent_blue_soft">#60A5FA</color>
+    <color name="accent_blue_bg">#EFF6FF</color>
+
+    <color name="brand_orange">#F97316</color>
+    <color name="brand_orange_bg">#FFEDD5</color>
+    <color name="brand_orange_bg_light">#FFF7ED</color>
+
+    <color name="success_green">#22C55E</color>
+    <color name="success_green_bg">#F0FDF4</color>
+
+    <color name="danger_red">#EF4444</color>
 </resources>

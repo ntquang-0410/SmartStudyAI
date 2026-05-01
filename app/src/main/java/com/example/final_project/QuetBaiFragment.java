@@ -36,7 +36,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -69,6 +72,10 @@ public class QuetBaiFragment extends Fragment {
     // ── State ─────────────────────────────────────────────────────────────────
     private Uri latestCapturedUri;
     private String rawAnswer;
+    private String savedAnswerKey;
+
+    // ── History ───────────────────────────────────────────────────────────────
+    private final ScanHistoryRepository historyRepo = new ScanHistoryRepository();
 
     // ── Launchers ─────────────────────────────────────────────────────────────
 
@@ -205,6 +212,8 @@ public class QuetBaiFragment extends Fragment {
                 "UTF-8",
                 null
         );
+
+        saveToHistoryIfNeeded(answer);
     }
 
     private void renderError(String message) {
@@ -300,5 +309,55 @@ public class QuetBaiFragment extends Fragment {
     private boolean allPermissionsGranted() {
         return ContextCompat.checkSelfPermission(
                 requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    // ── History persistence ───────────────────────────────────────────────────
+
+    private void saveToHistoryIfNeeded(String answer) {
+        if (latestCapturedUri == null || answer == null || answer.isEmpty()) return;
+
+        // Idempotency: don't re-save the same answer if observer fires twice
+        // (e.g., on config change with cached LiveData).
+        String key = latestCapturedUri + "|" + answer.hashCode();
+        if (key.equals(savedAnswerKey)) return;
+        savedAnswerKey = key;
+
+        if (historyRepo.currentUid() == null) return; // not signed in, skip silently
+
+        Uri uri = latestCapturedUri;
+        cameraExecutor.execute(() -> {
+            byte[] bytes = readBytes(uri);
+            if (bytes == null) return;
+            historyRepo.save(bytes, answer)
+                    .addOnSuccessListener(item -> {
+                        if (!isAdded()) return;
+                        Toast.makeText(requireContext(),
+                                "Đã lưu vào lịch sử", Toast.LENGTH_SHORT).show();
+                        if (item.getId() != null) {
+                            SubjectClassifier.classifyAsync(answer, subject ->
+                                    historyRepo.updateSubject(item.getId(), subject));
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        if (!isAdded()) return;
+                        Toast.makeText(requireContext(),
+                                "Lưu lịch sử thất bại: " + e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    });
+        });
+    }
+
+    @Nullable
+    private byte[] readBytes(Uri uri) {
+        try (InputStream in = requireContext().getContentResolver().openInputStream(uri)) {
+            if (in == null) return null;
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            byte[] buf = new byte[8 * 1024];
+            int n;
+            while ((n = in.read(buf)) != -1) out.write(buf, 0, n);
+            return out.toByteArray();
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

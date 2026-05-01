@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/brand_orange"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Quay lại"
+            android:padding="12dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Hồ sơ của tôi"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+            android:text="LƯU"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/sym_def_app_icon"
+                    app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+                <FrameLayout
+                    android:id="@+id/fl_avatar_edit"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/bg_avatar_edit"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_camera"
+                        app:tint="#FFFFFF" />
+                </FrameLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/text_tertiary"
+                android:textSize="13sp" />
+
+            <!-- Display name -->
+            <TextView
+                style="@style/ProfileLabel"
+                android:text="Họ và tên" />
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/ProfileInput"
+                android:hint="Nhập tên hiển thị"
+                android:inputType="textPersonName" />
+
+            <!-- Birth date -->
+            <TextView
+                style="@style/ProfileLabel"
+                android:text="Ngày sinh" />
+
+            <TextView
+                android:id="@+id/tv_birth_date"
+                style="@style/ProfileInput"
+                android:clickable="true"
+                android:focusable="true"
+                android:hint="Chọn ngày sinh"
+                android:textColor="@color/text_primary" />
+
+            <!-- Education level -->
+            <TextView
+                style="@style/ProfileLabel"
+                android:text="Cấp học" />
+
+            <RadioGroup
+                android:id="@+id/rg_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tiểu học (lớp 1–5)"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/rb_secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trung học cơ sở (lớp 6–9)"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/rb_high"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trung học phổ thông (lớp 10–12)"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/rb_university"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sinh viên đại học"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/rb_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Khác"
+                    android:textColor="@color/text_primary" />
+            </RadioGroup>
+
+            <!-- Conditional grade / year -->
+            <TextView
+                android:id="@+id/tv_grade_label"
+                style="@style/ProfileLabel"
+                android:text="Lớp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_grade_value"
+                style="@style/ProfileInput"
+                android:clickable="true"
+                android:focusable="true"
+                android:hint="Chọn lớp"
+                android:textColor="@color/text_primary"
+                android:visibility="gone" />
+
+            <!-- School -->
+            <TextView
+                style="@style/ProfileLabel"
+                android:text="Trường đang theo học" />
+
+            <EditText
+                android:id="@+id/et_school"
+                style="@style/ProfileInput"
+                android:hint="Tên trường"
+                android:inputType="textCapWords" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

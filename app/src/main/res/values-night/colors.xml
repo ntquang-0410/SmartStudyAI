@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark-mode overrides for the semantic palette in values/colors.xml. -->
+    <color name="app_bg">#0B1220</color>
+    <color name="surface_bg">#0F1729</color>
+    <color name="card_bg">#1E293B</color>
+    <color name="input_bg">#1E293B</color>
+    <color name="input_stroke">#334155</color>
+
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#CBD5E1</color>
+    <color name="text_tertiary">#94A3B8</color>
+    <color name="text_hint">#64748B</color>
+
+    <color name="divider">#334155</color>
+    <color name="icon_muted">#475569</color>
+
+    <color name="accent_blue">#60A5FA</color>
+    <color name="accent_blue_dark">#93C5FD</color>
+    <color name="accent_blue_soft">#3B82F6</color>
+    <color name="accent_blue_bg">#1E293B</color>
+
+    <color name="brand_orange">#FB923C</color>
+    <color name="brand_orange_bg">#3B2417</color>
+    <color name="brand_orange_bg_light">#2A1A10</color>
+
+    <color name="success_green">#4ADE80</color>
+    <color name="success_green_bg">#0F2A1A</color>
+
+    <color name="danger_red">#F87171</color>
+</resources>

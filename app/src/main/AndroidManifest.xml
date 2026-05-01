@@ -5,6 +5,11 @@
     <uses-feature android:name="android.hardware.camera.any" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +23,7 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_project">
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,6 +34,65 @@
             android:name=".MainActivity"
             android:exported="false">
         </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".HistoryDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".FullscreenImageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".ScanPickerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".QuizSessionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".RemindersActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project" />
+
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Final_project"
+            android:windowSoftInputMode="adjustResize" />
+
+        <receiver
+            android:name=".ReminderReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
 
         <provider
             android:name="androidx.core.content.FileProvider"

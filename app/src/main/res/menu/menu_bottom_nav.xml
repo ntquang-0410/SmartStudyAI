@@ -6,11 +6,15 @@
         android:icon="@drawable/ic_home"
         android:title="Trang Chủ" />
     <item
+        android:id="@+id/nav_practice"
+        android:icon="@drawable/ic_quiz"
+        android:title="Luyện Tập" />
+    <item
         android:id="@+id/nav_scan"
         android:icon="@drawable/ic_camera"
         android:title="Quét Bài" />
     <item
-        android:id="@+id/nav_practice"
-        android:icon="@drawable/ic_quiz"
-        android:title="Luyện Tập" />
+        android:id="@+id/nav_history"
+        android:icon="@drawable/ic_history"
+        android:title="Lịch Sử" />
 </menu>

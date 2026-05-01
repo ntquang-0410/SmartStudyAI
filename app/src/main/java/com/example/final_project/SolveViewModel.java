@@ -2,7 +2,9 @@ package com.example.final_project;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -12,6 +14,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.final_project.GeminiResult;
 import com.example.final_project.GeminiVisionService;
 
+import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -64,9 +67,23 @@ public class SolveViewModel extends AndroidViewModel {
         _uiState.setValue(new SolveUiState.Loading());
 
         executor.execute(() -> {
-            GeminiResult result = geminiService.solveFromUri(uri, extraText);
+            Bitmap bitmap = decodeUri(uri);
+            if (bitmap == null) {
+                _uiState.postValue(new SolveUiState.Error("Không đọc được ảnh"));
+                return;
+            }
+            GeminiResult result = geminiService.solveFromBitmap(bitmap, extraText);
             postResult(result);
         });
+    }
+
+    private Bitmap decodeUri(Uri uri) {
+        try (InputStream in = getApplication().getContentResolver().openInputStream(uri)) {
+            return in == null ? null : BitmapFactory.decodeStream(in);
+        } catch (Exception e) {
+            Log.e("SolveViewModel", "decodeUri failed", e);
+            return null;
+        }
     }
 
     /**

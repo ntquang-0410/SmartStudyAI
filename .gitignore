@@ -1,75 +1,97 @@
-# Android/Gradle
-*.iml
-.gradle
+# ============================
+# Gradle / Android build
+# ============================
 .gradle/
-/local.properties
-local.properties
-/build
 build/
+/build
+/app/build/
 /captures
-.externalNativeBuild
-.cxx
+.externalNativeBuild/
 .cxx/
+*.iml
 
-# IDE Files
-.idea/
-.idea/caches
-.idea/libraries
+# ============================
+# Local config & secrets
+# (chứa SDK path + API keys — KHÔNG commit)
+# ============================
+local.properties
+/local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Firebase / Google services config (chứa project info)
+google-services.json
+GoogleService-Info.plist
+
+# ============================
+# Kotlin
+# ============================
+.kotlin/
+
+# ============================
+# Android Studio / IntelliJ IDEA
+# ============================
+.idea/caches/
+.idea/libraries/
 .idea/modules.xml
 .idea/workspace.xml
 .idea/navEditor.xml
 .idea/assetWizardSettings.xml
-.idea/vcs.xml
+.idea/deploymentTargetDropDown.xml
+.idea/deploymentTargetSelector.xml
+.idea/shelf/
+.idea/httpRequests/
+.idea/dictionaries/
+.idea/tasks.xml
 *.iws
 *.ipr
-*.idev
 
-# DS_Store
-.DS_Store
+# ============================
+# Build outputs (APK, AAB, ProGuard mappings)
+# ============================
+*.apk
+*.aab
+*.ap_
+*.aar
+/bin/
+/out/
+/release/
+/debug/
+proguard/
+mapping.txt
 
-# Kotlin
-.kotlin/
-
-# Node.js / npm
+# ============================
+# Node.js (Anthropic SDK trong package.json)
+# ============================
 node_modules/
-package-lock.json
 npm-debug.log*
 yarn-error.log*
+yarn-debug.log*
+.pnpm-debug.log*
 
-# Log files
+# ============================
+# Logs & coverage
+# ============================
 *.log
 logs/
+coverage/
+.coverage
+hs_err_pid*
+replay_pid*
 
-# OS Files
+# ============================
+# OS files
+# ============================
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 *.swp
 *.swo
 *~
 
-# Android studio
-.idea/
-local.properties
-
-# Build outputs
-/bin
-/out
-*.apk
-*.ap_
-*.dex
-*.class
-*.jar
-
-# Gradle files
-.gradle/
-build/
-
-# Generated files
-generated/
-
-# ProGuard
-/proguard/
-
-# Test coverage
-coverage/
-.coverage
+# ============================
+# Claude Code (local settings)
+# ============================
+.claude/

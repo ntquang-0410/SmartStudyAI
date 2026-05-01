@@ -10,10 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
@@ -30,10 +34,12 @@ public class SplashActivity extends AppCompatActivity {
         tvAppName.startAnimation(slideUp);
         tvSlogan.startAnimation(slideUp);
 
-        // Navigate to MainActivity after 2500ms
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            Class<?> next = FirebaseAuth.getInstance().getCurrentUser() != null
+                    ? MainActivity.class
+                    : LoginActivity.class;
+            startActivity(new Intent(SplashActivity.this, next));
             finish();
-        }, 2500);
+        }, 1200);
     }
 }
